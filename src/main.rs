@@ -9,7 +9,8 @@ fn main() {
     let c = read_file_to_lines("test.sml".to_string());
     //let contents = fs::read_to_string("test.sml").expect("Error while reading file!");
     //println!("{:?}", c);
-    transpile(c);
+    //println!("{:?}", transpile(c));
+    write_lines_to_file("test.html".to_string(), transpile(c));
 }
 
 fn read_file_to_lines(filename: String) -> Vec<String> {
@@ -20,8 +21,12 @@ fn read_file_to_lines(filename: String) -> Vec<String> {
     buf.lines().map(|x| x.expect("could not parse line")).collect()
 }
 
+fn write_lines_to_file(filename: String, lines: Vec<String>) {
+    std::fs::write(filename, lines.join("\n")).expect("failed to write to file");
+}
+
 fn transpile(input: Vec<String>) -> Vec<String> {
-    let out: Vec<String> = Vec::new();
+    let mut out: Vec<String> = Vec::new();
 
     let mut intable = false;
     for i in 0..input.len() {
@@ -47,17 +52,17 @@ fn transpile(input: Vec<String>) -> Vec<String> {
                 }
             }
             '_' => {
-                part = format!("==> {}", cleanline);
+                part = format!("&rarr; {}<br>", cleanline);
             }
             '=' => {
-                part = format!("<h1>{}</h1>", cleanline); 
+                part = format!("<h1>{}</h1><br>", cleanline); 
             }
             _ => {
-                part = currentline.to_string();
+                part = format!("{}<br>", currentline);
             }
 
         }
-        println!("{}", part);
+        out.push(part);
     }
 
     out
