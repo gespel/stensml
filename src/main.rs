@@ -1,20 +1,26 @@
 use std::{
     fs::File,
     io::{prelude::*, BufReader},
-    path::Path,
+    env,
 };
 
 
 fn main() {
-    let c = read_file_to_lines("test.sml".to_string());
+    let args: Vec<String> = env::args().collect();
+    if args.len() <= 1 {
+        eprintln!("Error: No project name defined");
+        std::process::exit(1);
+    }
+    let project_name = args[1].clone();
+    //println!("{}", project_name);
+    let c = read_file_to_lines(format!("{}.sml", project_name.clone()));
     //let contents = fs::read_to_string("test.sml").expect("Error while reading file!");
     //println!("{:?}", c);
     //println!("{:?}", transpile(c));
-    write_lines_to_file("test.html".to_string(), transpile(c));
+    write_lines_to_file(format!("{}.html", project_name.clone()), transpile(c));
 }
 
 fn read_file_to_lines(filename: String) -> Vec<String> {
-    let out: Vec<String> = Vec::new();
     let file = File::open(filename).expect("File read error");
     let buf = BufReader::new(file);
     
@@ -34,7 +40,7 @@ fn transpile(input: Vec<String>) -> Vec<String> {
         let cleanline = (&currentline[1..]).to_string();
 
         let operator = currentline.chars().nth(0).unwrap();
-        let mut part: String;
+        let part: String;
         match operator {
             '-' => {
                 if intable {
