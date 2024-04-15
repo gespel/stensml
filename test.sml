@@ -1,10 +1,7 @@
+=Lina ist cool
 asd
 -asd
 -asd2
 -asd4
 -
--test
--test2
--
 _asd2
-=asd3
