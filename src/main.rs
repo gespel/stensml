@@ -1,5 +1,5 @@
 mod html;
-use crate::html::HTMLTranspiler;
+use crate::html::html_transpiler::HTMLTranspiler;
 use std::{
     fs::File,
     io::{prelude::*, BufReader},
