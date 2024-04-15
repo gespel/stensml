@@ -1,1 +1,1 @@
-/home/sten/Schreibtisch/Projekte/stensml/target/debug/stensml: /home/sten/Schreibtisch/Projekte/stensml/src/main.rs
+/home/sten/Schreibtisch/Projekte/stensml/target/debug/stensml: /home/sten/Schreibtisch/Projekte/stensml/src/html/html_transpiler.rs /home/sten/Schreibtisch/Projekte/stensml/src/html.rs /home/sten/Schreibtisch/Projekte/stensml/src/main.rs
