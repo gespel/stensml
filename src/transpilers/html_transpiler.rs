@@ -1,15 +1,12 @@
+use crate::transpilers::transpiler::Transpiler;
+
+
 pub struct HTMLTranspiler {
 
 }
 
-impl HTMLTranspiler {
-    pub fn new() -> HTMLTranspiler {
-        HTMLTranspiler {
-
-        }
-    }
-
-    pub fn transpile(&self, input: Vec<String>) -> Vec<String> {
+impl Transpiler for HTMLTranspiler {
+    fn transpile(&self, input: Vec<String>) -> Vec<String> {
         let mut out: Vec<String> = Vec::new();
         let mut intable = false;
         
@@ -52,5 +49,15 @@ impl HTMLTranspiler {
         }
         out
     }
+}
+
+impl HTMLTranspiler {
+    pub fn new() -> HTMLTranspiler {
+        HTMLTranspiler {
+
+        }
+    }
+
+    
 }
 
