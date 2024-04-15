@@ -33,8 +33,8 @@ fn write_lines_to_file(filename: String, lines: Vec<String>) {
 
 fn transpile(input: Vec<String>) -> Vec<String> {
     let mut out: Vec<String> = Vec::new();
-
     let mut intable = false;
+    
     for i in 0..input.len() {
         let currentline = input[i].clone();
         let cleanline = (&currentline[1..]).to_string();
@@ -70,6 +70,5 @@ fn transpile(input: Vec<String>) -> Vec<String> {
         }
         out.push(part);
     }
-
     out
 }
