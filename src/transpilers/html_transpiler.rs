@@ -8,6 +8,9 @@ pub struct HTMLTranspiler {
 impl Transpiler for HTMLTranspiler {
     fn transpile(&self, input: Vec<String>) -> Vec<String> {
         let mut out: Vec<String> = Vec::new();
+
+        out.push("<style>body { font-family: Arial, sans-serif; background-color: #f0f0f0; }</style>".to_string());
+
         let mut intable = false;
         
         for i in 0..input.len() {
@@ -37,7 +40,7 @@ impl Transpiler for HTMLTranspiler {
                         part = format!("&rarr; {}<br>", cleanline);
                     }
                     '=' => {
-                        part = format!("<h1>{}</h1><br>", cleanline); 
+                        part = format!("<h2>{}</h2><br>", cleanline); 
                     }
                     _ => {
                         part = format!("{}<br>", currentline);
@@ -45,7 +48,10 @@ impl Transpiler for HTMLTranspiler {
         
                 }
                 out.push(part);
-            } 
+            }
+            else if currentline.len() == 0 {
+                out.push("<br>".to_string());
+            }
         }
         out
     }
@@ -57,6 +63,7 @@ impl HTMLTranspiler {
 
         }
     }
+    
 
     
 }
