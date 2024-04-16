@@ -9,7 +9,7 @@ impl Transpiler for HTMLTranspiler {
     fn transpile(&self, input: Vec<String>) -> Vec<String> {
         let mut out: Vec<String> = Vec::new();
 
-        out.push("<style>body { font-family: Arial, sans-serif; background-color: #f0f0f0; }</style>".to_string());
+        out.push("<style>body { font-family: Arial, sans-serif; background-color: #163325; color: white; }</style>".to_string());
 
         let mut intable = false;
         
