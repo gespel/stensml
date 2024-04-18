@@ -1,8 +1,6 @@
 use std::{
-    fs,
     fs::File,
     io::{prelude::*, BufReader},
-    env,
 };
 
 pub fn read_file_to_lines(filename: String) -> Vec<String> {
