@@ -1,11 +1,14 @@
+mod tools;
 mod transpilers;
 use crate::transpilers::html_transpiler::HTMLTranspiler;
 use crate::transpilers::transpiler::Transpiler;
+use crate::tools::{
+    write_lines_to_file,
+    read_file_to_lines
+};
 
 use std::{
     fs,
-    fs::File,
-    io::{prelude::*, BufReader},
     env,
 };
 
@@ -37,16 +40,5 @@ fn main() {
     }
 }
 
-fn read_file_to_lines(filename: String) -> Vec<String> {
-    let file = File::open(filename).expect("File read error");
-    let buf = BufReader::new(file);
-    
-    buf.lines().map(|x| x.expect("could not parse line")).collect()
-}
 
-fn write_lines_to_file(filename: String, lines: Vec<String>) {
-    std::fs::write(&filename, lines.join("\n")).expect("failed to write to file");
-    println!("{} was transpiled!", filename);
-
-}
 
